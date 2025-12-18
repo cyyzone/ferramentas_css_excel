@@ -1,4 +1,4 @@
-# 🛠️ Ferramentas de Automação - Suporte Produttivo
+# 🛠️ Ferramentas de Automação
 
 Bem-vindo ao repositório de ferramentas de automação. Abaixo você encontra os links diretos para acessar cada gerador.
 
@@ -28,4 +28,4 @@ Utilize esta ferramenta para criar as tags de variáveis dinâmicas (arrays) par
 
 ---
 
-Desenvolvido por **[Seu Nome]** 🚀
+Desenvolvido por **Jeny** 🚀
