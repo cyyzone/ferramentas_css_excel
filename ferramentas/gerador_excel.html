@@ -45,15 +45,14 @@
                     <div class="mb-3">
                         <label class="form-label fw-bold">Variável Base</label>
                         <input type="text" id="excelBase" class="form-control" value="form_fill.fotos_attachments"
-                            placeholder="Cole aqui (com ou sem ${ })">
-                        <small class="text-muted">Ex: form_fill.fotos_attachments (O script limpa se você colar com
-                            chaves).</small>
+                            placeholder="Cole aqui (ex: ${form_fill.fotos[0].file})">
+                        <small class="text-muted">Pode colar o código completo, o script limpa para você.</small>
                     </div>
 
                     <div class="mb-3">
                         <label class="form-label fw-bold">Propriedade Final</label>
                         <input type="text" id="excelProp" class="form-control" value=".file"
-                            placeholder="Ex: .file ou .code">
+                            placeholder="Ex: .file ou .title">
                     </div>
 
                     <div class="row">
@@ -81,13 +80,22 @@
     </div>
 
     <script>
-        // Gera as tags dinâmicas para o Excel, iterando sobre os índices do array.
         function gerarExcel() {
-            // Tratamento de erro: Limpa a string caso eu cole a variável já com ${ } e espaços extras.
+            // 1. Pega o texto que a gente colou no campo "Variável Base".
             let base = document.getElementById('excelBase').value;
+
+            // 2. Limpeza básica: Se eu colei com ${ ou }, o código remove eles pra não duplicar depois.
             base = base.replace('${', '').replace('}', '').trim();
 
-            // Garante que a propriedade tenha o ponto inicial (ex: .file), mesmo que eu esqueça de digitar.
+            // 3. O "Pulo do Gato": 
+            // Se eu copiei o código inteiro de algum lugar (ex: form_fill.fotos[0].file),
+            // o script acha o primeiro colchete "[" e corta tudo que vem depois.
+            // Assim ele pega só o nome limpo da variável (form_fill.fotos) automaticamente.
+            if (base.indexOf('[') > -1) {
+                base = base.substring(0, base.indexOf('['));
+            }
+
+            // 4. Garante o ponto: Se eu esquecer de colocar o ponto antes de "file" ou "code", o sistema coloca pra mim.
             let prop = document.getElementById('excelProp').value.trim();
             if (prop && !prop.startsWith('.')) {
                 prop = '.' + prop;
@@ -97,7 +105,7 @@
             const count = parseInt(document.getElementById('excelCount').value);
             let output = "";
 
-            // Monta a string final no formato correto do Produttivo: ${variavel[i].propriedade}
+            // 5. Gera a lista repetitiva: Cria as linhas de 0 até 50 (ou quanto eu quiser) no formato certinho do Excel.
             for (let i = start; i < (start + count); i++) {
                 output += `\${${base}[${i}]${prop}}\n`;
             }
@@ -105,7 +113,6 @@
             document.getElementById('excelOutput').value = output;
         }
 
-        // Utilitário para copiar o resultado direto.
         function copiar() {
             const copyText = document.getElementById('excelOutput');
             copyText.select();
