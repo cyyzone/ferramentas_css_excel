@@ -1,110 +1,108 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gerador CSS - Ocultar Itens</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        body {
-            background-color: #f4f6f9;
-            padding: 40px;
+        body { 
+            background-color: #f4f6f9; 
+            padding: 40px; 
         }
-
-        .card {
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        .card { 
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1); 
         }
-
-        textarea {
-            font-family: monospace;
-            font-size: 12px;
-            background-color: #f8f9fa;
+        textarea { 
+            font-family: monospace; 
+            font-size: 12px; 
+            background-color: #f8f9fa; 
         }
-
-        .btn-custom {
-            background-color: #0d6efd;
-            color: white;
+        .btn-custom { 
+            background-color: #0d6efd; 
+            color: white; 
             border: none;
         }
-        
         .btn-custom:hover {
-            background-color: #0b5ed7; 
-            color: white; 
+            background-color: #0b5ed7;
+            color: white;
         }
     </style>
 </head>
-
 <body>
 
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card p-5">
-                    <h3 class="text-center mb-4 text-primary">Gerador de CSS (Ocultar Itens)</h3>
-
-                    <div class="mb-3">
-                        <label class="form-label fw-bold">ID Base (sem o número final)</label>
-                        <input type="text" id="cssBase" class="form-control" value="section_4_field_1_attachment_"
-                            placeholder="Ex: section_4_field_1_attachment_">
-                        <small class="text-muted">O script vai adicionar os números automaticamente após este
-                            texto.</small>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-6 mb-3">
-                            <label class="form-label fw-bold">Começar em:</label>
-                            <input type="number" id="cssStart" class="form-control" value="0">
-                        </div>
-                        <div class="col-6 mb-3">
-                            <label class="form-label fw-bold">Quantidade total:</label>
-                            <input type="number" id="cssCount" class="form-control" value="10">
-                        </div>
-                    </div>
-
-                    <button onclick="gerarCSS()" class="btn btn-custom w-100 py-2">Gerar Código CSS</button>
-
-                    <hr class="my-4">
-
-                    <label class="form-label fw-bold">Resultado para copiar:</label>
-                    <textarea id="cssOutput" class="form-control" rows="8"></textarea>
-                    <button onclick="copiar()" class="btn btn-outline-secondary w-100 mt-2">Copiar para Área de
-                        Transferência</button>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card p-5">
+                <h3 class="text-center mb-4 text-primary">Gerador de CSS (Ocultar Itens)</h3>
+                
+                <div class="mb-3">
+                    <label class="form-label fw-bold">ID Base</label>
+                    <input type="text" id="cssBase" class="form-control" value="section_4_field_1_attachment_" placeholder="Cole aqui (ex: section_4_field_1_attachment_0)">
+                    <small class="text-muted">Pode colar o ID completo com número, o script limpa para você.</small>
                 </div>
+
+                <div class="row">
+                    <div class="col-6 mb-3">
+                        <label class="form-label fw-bold">Começar em:</label>
+                        <input type="number" id="cssStart" class="form-control" value="0">
+                    </div>
+                    <div class="col-6 mb-3">
+                        <label class="form-label fw-bold">Quantidade total:</label>
+                        <input type="number" id="cssCount" class="form-control" value="10">
+                    </div>
+                </div>
+
+                <button onclick="gerarCSS()" class="btn btn-custom w-100 py-2">Gerar Código CSS</button>
+                
+                <hr class="my-4">
+                
+                <label class="form-label fw-bold">Resultado para copiar:</label>
+                <textarea id="cssOutput" class="form-control" rows="8"></textarea>
+                <button onclick="copiar()" class="btn btn-outline-secondary w-100 mt-2">Copiar para Área de Transferência</button>
             </div>
         </div>
     </div>
+</div>
 
-    <script>
-        // Gera o bloco de CSS para ocultar múltiplos elementos de uma vez (ex: lista de fotos).
-        function gerarCSS() {
-            const base = document.getElementById('cssBase').value.trim();
-            const start = parseInt(document.getElementById('cssStart').value);
-            const count = parseInt(document.getElementById('cssCount').value);
-            let output = "";
-            let ids = [];
+<script>
+    function gerarCSS() {
+        // 1. Pega o texto que eu colei no campo "ID Base".
+        let base = document.getElementById('cssBase').value.trim();
+        
+        // 2. O "Pulo do Gato" (Limpeza Automática):
+        // Se eu colar o ID já com o número final (tipo attachment_0), o código abaixo detecta e remove.
+        // O comando .replace(/\d+$/, '') significa: "ache qualquer número (\d) que esteja no final da linha ($) e apague".
+        // Assim eu não preciso ficar apagando o "0" na mão toda vez.
+        base = base.replace(/\d+$/, '');
 
-            // Loop para criar os IDs sequenciais (#base0, #base1, etc.)
-            for (let i = start; i < (start + count); i++) {
-                ids.push(`#${base}${i}`);
-            }
+        const start = parseInt(document.getElementById('cssStart').value);
+        const count = parseInt(document.getElementById('cssCount').value);
+        let output = "";
+        let ids = [];
 
-            // Junta tudo e adiciona a regra display: none !important para forçar a ocultação no relatório.
-            output = ids.join(', \n') + " {\n    display: none !important;\n}";
-            document.getElementById('cssOutput').value = output;
+        // 3. O Loop (Repetição):
+        // Aqui o sistema cria a lista repetindo o ID e adicionando o número sequencial (0, 1, 2...)
+        for (let i = start; i < (start + count); i++) {
+            ids.push(`#${base}${i}`); // Adiciona o # na frente pra virar um seletor CSS válido.
         }
 
-        // Utilitário para copiar o resultado direto.
-        function copiar() {
-            const copyText = document.getElementById('cssOutput');
-            copyText.select();
-            copyText.setSelectionRange(0, 99999);
-            navigator.clipboard.writeText(copyText.value);
-            alert("Código CSS copiado!");
-        }
-    </script>
+        // 4. Finalização:
+        // Junta todos os IDs com uma vírgula e adiciona a regra mágica "display: none !important" no final.
+        output = ids.join(', \n') + " {\n    display: none !important;\n}";
+        
+        document.getElementById('cssOutput').value = output;
+    }
+
+    function copiar() {
+        const copyText = document.getElementById('cssOutput');
+        copyText.select();
+        copyText.setSelectionRange(0, 99999); 
+        navigator.clipboard.writeText(copyText.value);
+        alert("Código CSS copiado!");
+    }
+</script>
 
 </body>
-
-
 </html>
