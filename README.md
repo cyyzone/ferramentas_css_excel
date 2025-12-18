@@ -37,14 +37,14 @@ Se você precisa configurar um relatório Excel e tem que colocar as colunas de 
     * *Exemplo:* `form_fill.fotos_do_servico`
 2.  **Coloque na Ferramenta:** Cole no campo "Variável Base".
     * *Dica:* Não precisa se preocupar com os símbolos `${ }`, o sistema arruma pra você.
-3.  **Escolha a Propriedade:** O que você quer mostrar? O arquivo da foto? O código?
-    * *Exemplo:* `.file` (para o link da imagem) ou `.code` (para códigos).
+3.  **Escolha a Propriedade:** O que você quer mostrar? O arquivo da foto? A legenda?
+    * *Exemplo:* `.file` (imagem) ou `.title` (legenda).
 4.  **Gerar:** Clique no botão verde.
 5.  **Sucesso:** Ele vai gerar uma lista com todas as tags na ordem certa. Copie e cole cada linha na sua planilha Excel.
 
 ---
 
-## 💡 Dica de Amigo (Troubleshooting)
+## 💡 Dica de Amigo 
 
 **"Atualizei a ferramenta, mas continua igual!"**
 Às vezes o navegador guarda uma "memória" (cache) da versão antiga. Se você notar que algo mudou mas não apareceu:
