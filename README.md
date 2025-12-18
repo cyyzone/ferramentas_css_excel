@@ -8,11 +8,11 @@ Clique nos links abaixo para abrir a ferramenta desejada no seu navegador:
 
 ### 🎨 1. Gerador de CSS (Ocultar Fotos)
 Utilize esta ferramenta para gerar códigos CSS que ocultam múltiplos itens sequenciais (ex: fotos em massa).
-👉 **[Abrir Gerador de CSS](https://SEU-USUARIO.github.io/NOME-DO-REPOSITORIO/gerador_css.html)**
+👉 **[Abrir Gerador de CSS](https://cyyzone/ferramentas_css_excel/ferramentas/gerador_css.html)**
 
 ### 📊 2. Gerador de Excel (Tags Variáveis)
 Utilize esta ferramenta para criar as tags de variáveis dinâmicas (arrays) para exportação de dados.
-👉 **[Abrir Gerador de Excel](https://SEU-USUARIO.github.io/NOME-DO-REPOSITORIO/gerador_excel.html)**
+👉 **[Abrir Gerador de Excel](https://cyyzone/ferramentas_css_excel/ferramentas/gerador_excel.html)**
 
 ---
 
