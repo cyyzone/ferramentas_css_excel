@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerador Excel - Tags Variáveis</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f4f6f9;
+            padding: 40px;
+        }
+
+        .card {
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        textarea {
+            font-family: monospace;
+            font-size: 12px;
+            background-color: #f8f9fa;
+        }
+
+        .btn-success-custom {
+            background-color: #198754;
+            color: white;
+            border: none;
+        }
+
+        .btn-success-custom:hover {
+            background-color: #157347;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card p-5">
+                    <h3 class="text-center mb-4 text-success">Gerador de Tags para Excel</h3>
+
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">Variável Base</label>
+                        <input type="text" id="excelBase" class="form-control" value="form_fill.fotos_attachments"
+                            placeholder="Cole aqui (com ou sem ${ })">
+                        <small class="text-muted">Ex: form_fill.fotos_attachments (O script limpa se você colar com
+                            chaves).</small>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">Propriedade Final</label>
+                        <input type="text" id="excelProp" class="form-control" value=".file"
+                            placeholder="Ex: .file ou .code">
+                    </div>
+
+                    <div class="row">
+                        <div class="col-6 mb-3">
+                            <label class="form-label fw-bold">Começar em:</label>
+                            <input type="number" id="excelStart" class="form-control" value="0">
+                        </div>
+                        <div class="col-6 mb-3">
+                            <label class="form-label fw-bold">Quantidade total:</label>
+                            <input type="number" id="excelCount" class="form-control" value="50">
+                        </div>
+                    </div>
+
+                    <button onclick="gerarExcel()" class="btn btn-success-custom w-100 py-2">Gerar Tags</button>
+
+                    <hr class="my-4">
+
+                    <label class="form-label fw-bold">Resultado para copiar:</label>
+                    <textarea id="excelOutput" class="form-control" rows="8"></textarea>
+                    <button onclick="copiar()" class="btn btn-outline-secondary w-100 mt-2">Copiar para Área de
+                        Transferência</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Gera as tags dinâmicas para o Excel, iterando sobre os índices do array.
+        function gerarExcel() {
+            // Tratamento de erro: Limpa a string caso eu cole a variável já com ${ } e espaços extras.
+            let base = document.getElementById('excelBase').value;
+            base = base.replace('${', '').replace('}', '').trim();
+
+            // Garante que a propriedade tenha o ponto inicial (ex: .file), mesmo que eu esqueça de digitar.
+            let prop = document.getElementById('excelProp').value.trim();
+            if (prop && !prop.startsWith('.')) {
+                prop = '.' + prop;
+            }
+
+            const start = parseInt(document.getElementById('excelStart').value);
+            const count = parseInt(document.getElementById('excelCount').value);
+            let output = "";
+
+            // Monta a string final no formato correto do Produttivo: ${variavel[i].propriedade}
+            for (let i = start; i < (start + count); i++) {
+                output += `\${${base}[${i}]${prop}}\n`;
+            }
+
+            document.getElementById('excelOutput').value = output;
+        }
+
+        // Utilitário para copiar o resultado direto.
+        function copiar() {
+            const copyText = document.getElementById('excelOutput');
+            copyText.select();
+            copyText.setSelectionRange(0, 99999);
+            navigator.clipboard.writeText(copyText.value);
+            alert("Tags copiadas!");
+        }
+    </script>
+
+</body>
+
+</html>
