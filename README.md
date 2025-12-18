@@ -14,19 +14,17 @@ Não precisa baixar nada! É só clicar nos links abaixo para abrir as ferrament
 
 ---
 
-## 👣 Passo a Passo: Como Usar
-
 ### 1. Usando o Gerador de CSS (Ocultar Itens)
 
 Sabe quando o cliente pede para ocultar 50 fotos do checklist no relatório? Em vez de escrever 50 linhas de código, faça assim:
 
-1.  **Pegue o ID:** Vá no relatório (inspecionar elemento ou documentação) e pegue o ID base.
-    * *Exemplo:* `section_4_field_1_attachment_`
-2.  **Coloque na Ferramenta:** Abra o link do Gerador de CSS e cole esse ID no primeiro campo.
+1.  **Pegue o ID:** Vá no relatório (inspecionar elemento) e copie o ID do primeiro item.
+    * *Exemplo:* `section_4_field_1_attachment_0`
+2.  **Coloque na Ferramenta:** Cole direto no campo "ID Base".
+    * *O Pulo do Gato:* Pode colar com o número final mesmo! O sistema é esperto e remove o `0` (ou `15`, `99`...) automaticamente para deixar só o ID base.
 3.  **Defina a Quantidade:** Quantas fotos são? Digite o número (ex: `50`).
 4.  **Gerar:** Clique no botão azul.
 5.  **Pronto!** O site vai criar o código prontinho. É só clicar em "Copiar" e colar lá na aba "Editar código (Avançado)" do perfil de exportação.
-
 ---
 
 ### 2. Usando o Gerador de Excel
@@ -34,9 +32,9 @@ Sabe quando o cliente pede para ocultar 50 fotos do checklist no relatório? Em 
 Se você precisa configurar um relatório Excel e tem que colocar as colunas de cada foto (`[0]`, `[1]`, `[2]`...), use essa ferramenta:
 
 1.  **Pegue a Variável:** Copie o nome da variável da lista ou foto.
-    * *Exemplo:* `form_fill.fotos_do_servico`
-2.  **Coloque na Ferramenta:** Cole no campo "Variável Base".
-    * *Dica:* Não precisa se preocupar com os símbolos `${ }`, o sistema arruma pra você.
+    * *Exemplo:* `${form_fill.fotos_do_servico[0].file}`
+2.  **Coloque na Ferramenta:** Cole direto no campo "Variável Base".
+    * *Dica:* Não precisa limpar nada! O sistema entende e remove sozinho os `${ }` e os colchetes `[0]`.
 3.  **Escolha a Propriedade:** O que você quer mostrar? O arquivo da foto? A legenda?
     * *Exemplo:* `.file` (imagem) ou `.title` (legenda).
 4.  **Gerar:** Clique no botão verde.
