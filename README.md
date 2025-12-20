@@ -14,7 +14,7 @@ Não precisa baixar nada! É só clicar nos links abaixo para abrir as ferrament
 
 
 
-### 1. Usando o Ocultar Campos PDF
+## 1. Usando o Ocultar Campos PDF
 
 Sabe quando o cliente pede para ocultar 50 fotos do checklist no relatório? Em vez de escrever 50 linhas de código, faça assim:
 
@@ -27,7 +27,7 @@ Sabe quando o cliente pede para ocultar 50 fotos do checklist no relatório? Em 
 5.  **Pronto!** O site vai criar o código prontinho. É só clicar em "Copiar" e colar lá na aba "Editar código (Avançado)" do perfil de exportação.
 
 
-### 2. Usando o Gerar Tags Excel
+## 2. Usando o Gerar Tags Excel
 
 Se você precisa configurar um relatório Excel e tem que colocar as colunas de cada foto (`[0]`, `[1]`, `[2]`...), use essa ferramenta:
 
