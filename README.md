@@ -12,7 +12,7 @@ Não precisa baixar nada! É só clicar nos links abaixo para abrir as ferrament
 ### 📊 [Abrir Gerar Tags Excel](https://cyyzone.github.io/ferramentas_css_excel/ferramentas/gerador_excel.html)
 > **Pra que serve?** Para gerar aquelas tags chatas (`${...}`) de listas e fotos para o Excel, sem ter que digitar uma por uma.
 
----
+
 
 ### 1. Usando o Ocultar Campos PDF
 
@@ -25,7 +25,7 @@ Sabe quando o cliente pede para ocultar 50 fotos do checklist no relatório? Em 
 3.  **Defina a Quantidade:** Quantas fotos são? Digite o número (ex: `50`).
 4.  **Gerar:** Clique no botão azul.
 5.  **Pronto!** O site vai criar o código prontinho. É só clicar em "Copiar" e colar lá na aba "Editar código (Avançado)" do perfil de exportação.
----
+
 
 ### 2. Usando o Gerar Tags Excel
 
@@ -40,7 +40,7 @@ Se você precisa configurar um relatório Excel e tem que colocar as colunas de 
 4.  **Gerar:** Clique no botão verde.
 5.  **Sucesso:** Ele vai gerar uma lista com todas as tags na ordem certa. Copie e cole cada linha na sua planilha Excel.
 
----
+
 
 ## 💡 Dica de Amigo 
 
