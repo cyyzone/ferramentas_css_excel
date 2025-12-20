@@ -6,15 +6,15 @@ Aqui você encontra ferramentas criadas para facilitar a nossa vida no suporte, 
 
 Não precisa baixar nada! É só clicar nos links abaixo para abrir as ferramentas direto no seu navegador:
 
-### 🎨 [Abrir Gerador de CSS (Ocultar Fotos)](https://cyyzone.github.io/ferramentas_css_excel/ferramentas/gerador_css.html)
+### 🎨 [Abrir Ocultar Campos PDF](https://cyyzone.github.io/ferramentas_css_excel/ferramentas/gerador_css.html)
 > **Pra que serve?** Para quando você precisa ocultar várias fotos ou campos de uma vez no relatório PDF.
 
-### 📊 [Abrir Gerador de Excel (Tags Variáveis)](https://cyyzone.github.io/ferramentas_css_excel/ferramentas/gerador_excel.html)
+### 📊 [Abrir Gerar Tags Excel](https://cyyzone.github.io/ferramentas_css_excel/ferramentas/gerador_excel.html)
 > **Pra que serve?** Para gerar aquelas tags chatas (`${...}`) de listas e fotos para o Excel, sem ter que digitar uma por uma.
 
 ---
 
-### 1. Usando o Gerador de CSS (Ocultar Itens)
+### 1. Usando o Ocultar Campos PDF
 
 Sabe quando o cliente pede para ocultar 50 fotos do checklist no relatório? Em vez de escrever 50 linhas de código, faça assim:
 
@@ -27,7 +27,7 @@ Sabe quando o cliente pede para ocultar 50 fotos do checklist no relatório? Em 
 5.  **Pronto!** O site vai criar o código prontinho. É só clicar em "Copiar" e colar lá na aba "Editar código (Avançado)" do perfil de exportação.
 ---
 
-### 2. Usando o Gerador de Excel
+### 2. Usando o Gerar Tags Excel
 
 Se você precisa configurar um relatório Excel e tem que colocar as colunas de cada foto (`[0]`, `[1]`, `[2]`...), use essa ferramenta:
 
